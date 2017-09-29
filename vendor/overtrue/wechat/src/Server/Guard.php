@@ -53,6 +53,7 @@ class Guard
     const LINK_MSG = 128;
     const DEVICE_EVENT_MSG = 256;
     const DEVICE_TEXT_MSG = 512;
+    const FILE_MSG = 1024;
     const EVENT_MSG = 1048576;
     const ALL_MSG = 1049598;
 
@@ -94,6 +95,7 @@ class Guard
         'link' => 128,
         'device_event' => 256,
         'device_text' => 512,
+        'file' => 1024,
         'event' => 1048576,
     ];
 
@@ -289,6 +291,7 @@ class Guard
 
         if (!$this->isMessage($message)) {
             $messageType = gettype($message);
+
             throw new InvalidArgumentException("Invalid Message type .'{$messageType}'");
         }
 
@@ -449,9 +452,11 @@ class Guard
     {
         $content = strval($content);
 
-        $arrayable = json_decode($content, true);
-        if (json_last_error() === JSON_ERROR_NONE) {
-            return $arrayable;
+        $dataSet = json_decode($content, true);
+        if ($dataSet && (JSON_ERROR_NONE === json_last_error())) {
+            // For mini-program JSON formats.
+            // Convert to XML if the given string can be decode into a data array.
+            $content = XML::build($dataSet);
         }
 
         if ($this->isSafeMode()) {
