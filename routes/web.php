@@ -15,7 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('test',function(){
+Route::get('/test',function(){
 	echo 'hello world!';
 });
 Route::get('log',       'LogController@log');
