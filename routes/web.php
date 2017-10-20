@@ -18,3 +18,5 @@ Route::get('/', function () {
 Route::get('/test',function(){
 	echo 'hello world!';
 });
+
+Route::get('log',       'LogController@log');
