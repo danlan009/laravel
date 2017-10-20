@@ -15,6 +15,6 @@ use Log;
 
 class LogController extends Controller{
     public function log(Request $request){
-        Log::debug($request->input('intro').':'.$request->input('data'));
+        Log::debug($_SERVER["HTTP_HOST"].','.$request->input('intro').':'.$request->input('data'));
     }
 }
