@@ -15,7 +15,6 @@ use Log;
 
 class LogController extends Controller{
     public function log(Request $request){
-        $data = $request->input('data');
-        dd($data);
+        Log::debug($request->input('intro').':'.$request->input('data'));
     }
 }
