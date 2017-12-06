@@ -13,6 +13,5 @@ class TestController extends Controller
         $result = DB::table('box_order')->pluck('order_no');
         dd($result);
 
-        //branch_test1
     }
 }
