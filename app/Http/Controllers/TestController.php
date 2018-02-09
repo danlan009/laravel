@@ -10,6 +10,6 @@ class TestController extends Controller
 {
     public function testFeature()
     {
-        echo '111';
+        echo 'redisTest';
     }
 }
