@@ -10,6 +10,8 @@ class TestController extends Controller
 {
     public function testFeature()
     {
-        echo 'redisTest';
+        //test master
+
+        //test fixbug-1.1.1
     }
 }
